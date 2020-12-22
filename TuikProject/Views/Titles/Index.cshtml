@@ -1,0 +1,32 @@
+﻿@model IEnumerable<StudentSystemWeb.Models.Title>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h1>İşsizlik Oranı (%)</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Baslik)
+            </td>
+            <td>
+                @Html.ActionLink("Ayrıntılı Bilgi Göster", "SubTitles", new { id = item.Id }, new { @class = "btn btn-success btn-size" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
