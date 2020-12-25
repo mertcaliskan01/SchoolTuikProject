@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TuikProject.Data;
 using TuikProject.Models;
 
 namespace TuikProject.Controllers
@@ -20,11 +21,13 @@ namespace TuikProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IWebHostEnvironment _hostEnvironment;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment hostEnvironment)
+        public HomeController(ApplicationDbContext context, ILogger<HomeController> logger, IWebHostEnvironment hostEnvironment)
         {
             _logger = logger;
             _hostEnvironment = hostEnvironment;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -105,66 +108,73 @@ namespace TuikProject.Controllers
 
         public async Task<IActionResult> Export()
         {
-            string sWebRootFolder = _hostEnvironment.WebRootPath;
-            string sFileName = @"Employees.xlsx";
-            string URL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, sFileName);
-            FileInfo file = new FileInfo(Path.Combine(sWebRootFolder, sFileName));
             var memory = new MemoryStream();
-            using (var fs = new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Create, FileAccess.Write))
+            string sFileName = @"Employees.xlsx";
+            try
             {
-                IWorkbook workbook;
-                workbook = new XSSFWorkbook();
-                ISheet excelSheet = workbook.CreateSheet("employee");
-                IRow row = excelSheet.CreateRow(0);
+                string sWebRootFolder = _hostEnvironment.WebRootPath;
+                string URL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, sFileName);
+                FileInfo file = new FileInfo(Path.Combine(sWebRootFolder, sFileName));
+                using (var fs = new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Create, FileAccess.Write))
+                {
+                    IWorkbook workbook;
+                    workbook = new XSSFWorkbook();
+                    ISheet excelSheet = workbook.CreateSheet("employee");
+                    IRow row = excelSheet.CreateRow(0);
 
-                row.CreateCell(0).SetCellValue("EmployeeId");
-                row.CreateCell(1).SetCellValue("EmployeeName");
-                row.CreateCell(2).SetCellValue("Age");
-                row.CreateCell(3).SetCellValue("Sex");
-                row.CreateCell(4).SetCellValue("Designation");
+                    row.CreateCell(0).SetCellValue("EmployeeId");
+                    row.CreateCell(1).SetCellValue("EmployeeName");
+                    row.CreateCell(2).SetCellValue("Age");
+                    row.CreateCell(3).SetCellValue("Sex");
+                    row.CreateCell(4).SetCellValue("Designation");
 
-                row = excelSheet.CreateRow(1);
-                row.CreateCell(0).SetCellValue(1);
-                row.CreateCell(1).SetCellValue("Jack Supreu");
-                row.CreateCell(2).SetCellValue(45);
-                row.CreateCell(3).SetCellValue("Male");
-                row.CreateCell(4).SetCellValue("Solution Architect");
+                    row = excelSheet.CreateRow(1);
+                    row.CreateCell(0).SetCellValue(1);
+                    row.CreateCell(1).SetCellValue("Jack Supreu");
+                    row.CreateCell(2).SetCellValue(45);
+                    row.CreateCell(3).SetCellValue("Male");
+                    row.CreateCell(4).SetCellValue("Solution Architect");
 
-                row = excelSheet.CreateRow(2);
-                row.CreateCell(0).SetCellValue(2);
-                row.CreateCell(1).SetCellValue("Steve khan");
-                row.CreateCell(2).SetCellValue(33);
-                row.CreateCell(3).SetCellValue("Male");
-                row.CreateCell(4).SetCellValue("Software Engineer");
+                    row = excelSheet.CreateRow(2);
+                    row.CreateCell(0).SetCellValue(2);
+                    row.CreateCell(1).SetCellValue("Steve khan");
+                    row.CreateCell(2).SetCellValue(33);
+                    row.CreateCell(3).SetCellValue("Male");
+                    row.CreateCell(4).SetCellValue("Software Engineer");
 
-                row = excelSheet.CreateRow(3);
-                row.CreateCell(0).SetCellValue(3);
-                row.CreateCell(1).SetCellValue("Romi gill");
-                row.CreateCell(2).SetCellValue(25);
-                row.CreateCell(3).SetCellValue("FeMale");
-                row.CreateCell(4).SetCellValue("Junior Consultant");
+                    row = excelSheet.CreateRow(3);
+                    row.CreateCell(0).SetCellValue(3);
+                    row.CreateCell(1).SetCellValue("Romi gill");
+                    row.CreateCell(2).SetCellValue(25);
+                    row.CreateCell(3).SetCellValue("FeMale");
+                    row.CreateCell(4).SetCellValue("Junior Consultant");
 
-                row = excelSheet.CreateRow(4);
-                row.CreateCell(0).SetCellValue(4);
-                row.CreateCell(1).SetCellValue("Hider Ali");
-                row.CreateCell(2).SetCellValue(34);
-                row.CreateCell(3).SetCellValue("Male");
-                row.CreateCell(4).SetCellValue("Accountant");
+                    row = excelSheet.CreateRow(4);
+                    row.CreateCell(0).SetCellValue(4);
+                    row.CreateCell(1).SetCellValue("Hider Ali");
+                    row.CreateCell(2).SetCellValue(34);
+                    row.CreateCell(3).SetCellValue("Male");
+                    row.CreateCell(4).SetCellValue("Accountant");
 
-                row = excelSheet.CreateRow(5);
-                row.CreateCell(0).SetCellValue(5);
-                row.CreateCell(1).SetCellValue("Mathew");
-                row.CreateCell(2).SetCellValue(48);
-                row.CreateCell(3).SetCellValue("Male");
-                row.CreateCell(4).SetCellValue("Human Resource");
+                    row = excelSheet.CreateRow(5);
+                    row.CreateCell(0).SetCellValue(5);
+                    row.CreateCell(1).SetCellValue("Mathew");
+                    row.CreateCell(2).SetCellValue(48);
+                    row.CreateCell(3).SetCellValue("Male");
+                    row.CreateCell(4).SetCellValue("Human Resource");
 
-                workbook.Write(fs);
+                    workbook.Write(fs);
+                }
+                using (var stream = new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Open))
+                {
+                    await stream.CopyToAsync(memory);
+                }
+                memory.Position = 0;
             }
-            using (var stream = new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Open))
+            catch (Exception ex)
             {
-                await stream.CopyToAsync(memory);
+                Console.WriteLine(ex);
             }
-            memory.Position = 0;
             return File(memory, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", sFileName);
         }
 
