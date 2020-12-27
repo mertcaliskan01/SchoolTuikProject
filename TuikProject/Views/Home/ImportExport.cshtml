@@ -1,9 +1,8 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-@model IEnumerable<TuikProject.Models.IssizlikOraniT2>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Import And Export";
 }
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
@@ -60,25 +59,62 @@
 
 </script>
 
-<form asp-controller="Home" asp-action="Export">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <input type="file" id="fileupload" name="files" class="form-control" />
-            </div>
-            <div class="col-md-3">
-                <input type="button" name="Upload" value="Upload" id="btnupload" class="btn btn-primary" />
-                <a href="@Url.Action("Download", "Home")">Download</a>
-            </div>
-            <div class="col-md-5">
-                <input type="submit" name="Export" value="Create and Export" id="btnExport" class="btn btn-primary" asp-action="Export" />
-
-            </div>
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="~/img/sidebar-1.jpg">
+        <div class="logo">
+            <a href="~/Home/Index" class="simple-text logo-normal">
+                Tuik
+            </a>
         </div>
-        <div class="clearfix">&nbsp;</div>
-        <div class="row">
-            <div id="divPrint"></div>
-
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="~/Home/Index">
+                        <i class="material-icons">dashboard</i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="~/Home/Titles">
+                        <i class="material-icons">content_paste</i>
+                        <p>Table List</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">library_books</i>
+                        <p>Resources</p>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="~/Home/ImportExport">
+                        <i class="material-icons">bubble_chart</i>
+                        <p>Import And Export</p>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-</form>
+
+    <form asp-controller="Home" asp-action="Export">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="file" id="fileupload" name="files" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <input type="button" name="Upload" value="Upload" id="btnupload" class="btn btn-primary" />
+                    <a href="@Url.Action("Download", "Home")">Download</a>
+                </div>
+                <div class="col-md-5">
+                    <input type="submit" name="Export" value="Create and Export" id="btnExport" class="btn btn-primary" asp-action="Export" />
+
+                </div>
+            </div>
+            <div class="clearfix">&nbsp;</div>
+            <div class="row">
+                <div id="divPrint"></div>
+
+            </div>
+        </div>
+    </form>

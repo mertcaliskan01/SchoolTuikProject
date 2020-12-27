@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TuikProject.Data;
@@ -19,7 +20,6 @@ namespace StudentSystemWeb.Controllers
         }
 
 
-        // GET: Titles
         public async Task<IActionResult> Index()
         {
             var titles = _context.Titles.Where(b => b.IsAnaBaslik == true ).ToListAsync();
