@@ -39,29 +39,15 @@ namespace TuikProject.Helper
 
         public IEnumerable<IssizlikOraniT1> getIssizlikOraniT1()
         {
-            IEnumerable<IssizlikOraniT1> list = null;
-            try
-            {
-                list = (IEnumerable<IssizlikOraniT1>) _context.IssizlikOraniT1.ToList();
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+            var list = _context.IssizlikOraniT1.ToList();
             return list;
+
         }
 
         public IEnumerable<IssizlikOraniT2> getIssizlikOraniT2()
         {
-            IEnumerable<IssizlikOraniT2> list = null;
-            try
-            {
-                list = (IEnumerable<IssizlikOraniT2>) _context.IssizlikOraniT2.ToList();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+            var list = _context.IssizlikOraniT2.ToList();
+
             return list;
         }
 
