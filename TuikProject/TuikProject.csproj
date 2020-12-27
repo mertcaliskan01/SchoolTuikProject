@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
-    <Folder Include="wwwroot\UploadExcel\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,6 +2,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <div class="wrapper ">
+
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="~/img/sidebar-1.jpg">
         <div class="logo">
             <a href="~/Home/Index" class="simple-text logo-normal">
@@ -37,6 +38,7 @@
             </ul>
         </div>
     </div>
+
     <div class="main-panel">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
@@ -50,7 +52,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col">
                         <div class="card card-stats">
                             <div class="card-header card-header-warning card-header-icon">
                                 <div class="card-icon">
@@ -65,55 +67,121 @@
                             <div class="card-footer">
                                 <div class="stats">
                                     <i class="material-icons text-danger">warning</i>
-                                    <a href="javascript:;">Download</a>
+                                    <a href="@Url.Action("Download", "Home", new { fileName = "Tüketici-Fiyat-Endeksi-Yıllık" })">
+                                        Download
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col">
                         <div class="card card-stats">
-                            <div class="card-header card-header-success card-header-icon">
+                            <div class="card-header card-header-warning card-header-icon">
                                 <div class="card-icon">
-                                    <i class="material-icons">store</i>
+                                    <i class="material-icons">content_copy</i>
                                 </div>
-                                <p class="card-category">Revenue</p>
-                                <h3 class="card-title">$34,245</h3>
+                                <p class="card-category">İssizlik Oranı(%)</p>
+                                <h5 class="card-title">
+                                    2020/9 (AY)
+                                    <small>12.7</small>
+                                </h5>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">date_range</i> Last 24 Hours
+                                    <i class="material-icons text-danger">warning</i>
+                                    <a href="@Url.Action("Download", "Home", new { fileName = "İssizlik-Oranı" })">
+                                        Download
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col">
                         <div class="card card-stats">
-                            <div class="card-header card-header-danger card-header-icon">
+                            <div class="card-header card-header-warning card-header-icon">
                                 <div class="card-icon">
-                                    <i class="material-icons">info_outline</i>
+                                    <i class="material-icons">content_copy</i>
                                 </div>
-                                <p class="card-category">Fixed Issues</p>
-                                <h3 class="card-title">75</h3>
+                                <p class="card-category">GSYH Büyüme Hızı(%)</p>
+                                <h5 class="card-title">
+                                    2020/3 (Çeyrek)
+                                    <small>6.7</small>
+                                </h5>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">local_offer</i> Tracked from Github
+                                    <i class="material-icons text-danger">warning</i>
+                                    <a href="@Url.Action("Download", "Home", new { fileName = "GSYH-Büyüme-Hızı" })">
+                                        Download
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                </div>
+                <div class="row">
+                    <div class="col">
                         <div class="card card-stats">
-                            <div class="card-header card-header-info card-header-icon">
+                            <div class="card-header card-header-warning card-header-icon">
                                 <div class="card-icon">
-                                    <i class="fa fa-twitter"></i>
+                                    <i class="material-icons">content_copy</i>
                                 </div>
-                                <p class="card-category">Followers</p>
-                                <h3 class="card-title">+245</h3>
+                                <p class="card-category">Sanayi Üretim Endeksi-Yıllık(%)</p>
+                                <h5 class="card-title">
+                                    2020/10 (AY)
+                                    <small>10.2</small>
+                                </h5>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">update</i> Just Updated
+                                    <i class="material-icons text-danger">warning</i>
+                                    <a href="@Url.Action("Download", "Home", new { fileName = "Sanayi-Üretim-Endeksi-Yıllık" })">
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">content_copy</i>
+                                </div>
+                                <p class="card-category">Tüketici Güven Endeksi Aylık(%)</p>
+                                <h5 class="card-title">
+                                    2020/12 (AY)
+                                    <small>0</small>
+                                </h5>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons text-danger">warning</i>
+                                    <a href="@Url.Action("Download", "Home", new { fileName = "Tüketici-Güven-Endeksi-Aylık" })">
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">content_copy</i>
+                                </div>
+                                <p class="card-category">Türkiye Nüfusu(%)</p>
+                                <h5 class="card-title">
+                                    2019 (AY)
+                                    <small>83,154,997</small>
+                                </h5>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons text-danger">warning</i>
+                                    <a href="@Url.Action("Download", "Home", new { fileName = "IssizlikOrani" })">
+                                        Download
+                                    </a>
                                 </div>
                             </div>
                         </div>
