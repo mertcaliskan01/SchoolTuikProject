@@ -189,14 +189,6 @@ namespace TuikProject.Controllers
             return File(memory, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", sFileName);
         }
 
-        //public ActionResult Download()
-        //{
-        //    string Files = "wwwroot/UploadExcel/CoreProgramm_ExcelImport.xlsx";
-        //    byte[] fileBytes = System.IO.File.ReadAllBytes(Files);
-        //    System.IO.File.WriteAllBytes(Files, fileBytes);
-        //    MemoryStream ms = new MemoryStream(fileBytes);
-        //    return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, "employee.xlsx");
-        //}
 
         public ActionResult Download(string fileName)
         {

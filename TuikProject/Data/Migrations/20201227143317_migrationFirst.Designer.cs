@@ -10,8 +10,8 @@ using TuikProject.Data;
 namespace TuikProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201221193524_migration1")]
-    partial class migration1
+    [Migration("20201227143317_migrationFirst")]
+    partial class migrationFirst
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -231,69 +231,63 @@ namespace TuikProject.Data.Migrations
                     b.Property<string>("Aciklama")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Erkek2019")
+                    b.Property<string>("Column1")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Erkek2020")
+                    b.Property<string>("Column10")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ErkekOran2019")
+                    b.Property<string>("Column11")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ErkekOran2020")
+                    b.Property<string>("Column12")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Kadın2019")
+                    b.Property<string>("Column13")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Kadın2020")
+                    b.Property<string>("Column14")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("KadınOran2019")
+                    b.Property<string>("Column15")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("KadınOran2020")
+                    b.Property<string>("Column16")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Toplam2019")
+                    b.Property<string>("Column17")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Toplam2020")
+                    b.Property<string>("Column18")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ToplamOran2019")
+                    b.Property<string>("Column2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ToplamOran2020")
+                    b.Property<string>("Column3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Column4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Column5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Column6")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Column7")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Column8")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Column9")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("IssizlikOraniTablo1");
-                });
-
-            modelBuilder.Entity("StudentSystemWeb.Models.Title", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AltBaslikUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("AnaBaslikId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Baslik")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAnaBaslik")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Titles");
+                    b.ToTable("IssizlikOrani");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

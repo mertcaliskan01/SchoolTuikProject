@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TuikProject.Models
 {
-    public class IssizlikOraniT2
+    public class IssizlikOraniT1
     {
         public int Id { get; set; }
         public string Aciklama { get; set; }
@@ -21,11 +21,5 @@ namespace TuikProject.Models
         public string Column10 { get; set; }
         public string Column11 { get; set; }
         public string Column12 { get; set; }
-        public string Column13 { get; set; }
-        public string Column14 { get; set; }
-        public string Column15 { get; set; }
-        public string Column16 { get; set; }
-        public string Column17 { get; set; }
-        public string Column18 { get; set; }
     }
 }

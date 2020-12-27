@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TuikProject.Data;
 
-namespace StudentSystemWeb.Controllers
+namespace TuikProject.Controllers
 {
     public class TitlesController : Controller
     {
@@ -20,53 +20,53 @@ namespace StudentSystemWeb.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
-        {
-            var titles = _context.Titles.Where(b => b.IsAnaBaslik == true ).ToListAsync();
-            return View(await titles);
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    var titles = _context.Titles.Where(b => b.IsAnaBaslik == true ).ToListAsync();
+        //    return View(await titles);
+        //}
 
-        // GET: Titles/Details/5
-        public IActionResult Details(String url)
-        {
-            return Redirect("http://localhost:64256/IssizlikOrani/" + url);
-        }
+        //// GET: Titles/Details/5
+        //public IActionResult Details(String url)
+        //{
+        //    return Redirect("http://localhost:64256/IssizlikOrani/" + url);
+        //}
 
-        public async Task<IActionResult> SubTitles(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var title = _context.Titles.Where(b => b.AnaBaslikId == id).ToListAsync();
+        //public async Task<IActionResult> SubTitles(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var title = _context.Titles.Where(b => b.AnaBaslikId == id).ToListAsync();
 
-            if (title == null)
-            {
-                return NotFound();
-            }
+        //    if (title == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(await title);
-        }        
+        //    return View(await title);
+        //}        
 
 
-        public async Task<IActionResult> Download(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }else if (id == 13)
-            {
-                WebClient webClient = new WebClient();
-                webClient.DownloadFile("http://localhost:64256/Dosyalar/IssizlikOrani.xls", @"C:\Users\MERT\Desktop\tuikProject\StudentSystemWeb\Dosyalar\IssizlikOrani.xls");
-            }
-            else
-            {
-                Console.WriteLine("Id null error");
-            }
+        //public async Task<IActionResult> Download(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }else if (id == 13)
+        //    {
+        //        WebClient webClient = new WebClient();
+        //        webClient.DownloadFile("http://localhost:64256/Dosyalar/IssizlikOrani.xls", @"C:\Users\MERT\Desktop\tuikProject\StudentSystemWeb\Dosyalar\IssizlikOrani.xls");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Id null error");
+        //    }
 
-            var titles = _context.Titles.Where(b => b.IsAnaBaslik == true).ToListAsync();
-            return View(await titles);
-        }
+        //    var titles = _context.Titles.Where(b => b.IsAnaBaslik == true).ToListAsync();
+        //    return View(await titles);
+        //}
 
 
 

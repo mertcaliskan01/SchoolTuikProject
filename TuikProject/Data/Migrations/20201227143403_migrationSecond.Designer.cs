@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TuikProject.Data;
 
 namespace TuikProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201227143403_migrationSecond")]
+    partial class migrationSecond
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,75 +221,7 @@ namespace TuikProject.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("TuikProject.Models.IssizlikOrani", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IssizlikOrani");
-                });
-
-            modelBuilder.Entity("TuikProject.Models.IssizlikOraniT1", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Aciklama")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column10")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column11")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column12")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column4")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column5")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column6")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column7")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column8")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Column9")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("IssizlikOraniId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IssizlikOraniId");
-
-                    b.ToTable("IssizlikOraniT1");
-                });
-
-            modelBuilder.Entity("TuikProject.Models.IssizlikOraniT2", b =>
+            modelBuilder.Entity("StudentSystemWeb.Models.IssizlikOrani", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -351,14 +285,12 @@ namespace TuikProject.Data.Migrations
                     b.Property<string>("Column9")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("IssizlikOraniId")
-                        .HasColumnType("int");
+                    b.Property<string>("TableName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IssizlikOraniId");
-
-                    b.ToTable("IssizlikOraniT2");
+                    b.ToTable("IssizlikOrani");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -410,20 +342,6 @@ namespace TuikProject.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("TuikProject.Models.IssizlikOraniT1", b =>
-                {
-                    b.HasOne("TuikProject.Models.IssizlikOrani", null)
-                        .WithMany("IssizlikOraniT1")
-                        .HasForeignKey("IssizlikOraniId");
-                });
-
-            modelBuilder.Entity("TuikProject.Models.IssizlikOraniT2", b =>
-                {
-                    b.HasOne("TuikProject.Models.IssizlikOrani", null)
-                        .WithMany("IssizlikOraniT2")
-                        .HasForeignKey("IssizlikOraniId");
                 });
 #pragma warning restore 612, 618
         }

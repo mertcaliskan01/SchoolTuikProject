@@ -2,12 +2,12 @@
 
 namespace TuikProject.Data.Migrations
 {
-    public partial class migration2 : Migration
+    public partial class migrationFirst : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "IssizlikOraniTablo2",
+                name: "IssizlikOrani",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -30,24 +30,18 @@ namespace TuikProject.Data.Migrations
                     Column15 = table.Column<string>(nullable: true),
                     Column16 = table.Column<string>(nullable: true),
                     Column17 = table.Column<string>(nullable: true),
-                    Column18 = table.Column<string>(nullable: true),
-                    Column19 = table.Column<string>(nullable: true),
-                    Column20 = table.Column<string>(nullable: true),
-                    Column21 = table.Column<string>(nullable: true),
-                    Column22 = table.Column<string>(nullable: true),
-                    Column23 = table.Column<string>(nullable: true),
-                    Column24 = table.Column<string>(nullable: true)
+                    Column18 = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IssizlikOraniTablo2", x => x.Id);
+                    table.PrimaryKey("PK_IssizlikOrani", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "IssizlikOraniTablo2");
+                name: "IssizlikOrani");
         }
     }
 }

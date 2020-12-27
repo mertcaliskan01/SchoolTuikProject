@@ -1,4 +1,8 @@
-﻿@{ ViewData["Title"] = "Lists";
+﻿@model TuikProject.Models.IssizlikOrani
+
+
+
+@{ ViewData["Title"] = "Lists";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 
@@ -22,6 +26,12 @@
                     <a class="nav-link" href="~/Home/Tables">
                         <i class="material-icons">content_paste</i>
                         <p>Table List</p>
+                    </a>
+                </li>
+                <li class="nav-item accordion">
+                    <a class="nav-link">
+                        <i class="material-icons">content_paste</i>
+                        <p>İşsizlik Oranı</p>
                     </a>
                 </li>
                 <li class="nav-item ">
@@ -60,129 +70,110 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
+                                    <form asp-action="IssizlikOrani" method="get">
+                                        <div class="form-actions no-color">
+                                            <p>
+                                                Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                                                <input type="submit" value="Search" class="btn btn-default" /> |
+                                                <a asp-action="IssizlikOrani">Back to Full List</a>
+                                            </p>
+                                        </div>
+                                    </form>
+
                                     <table class="table">
-                                        <thead class=" text-primary">
-                                        <th>
-                                            ID
-                                        </th>
-                                        <th>
-                                            Name
-                                        </th>
-                                        <th>
-                                            Country
-                                        </th>
-                                        <th>
-                                            City
-                                        </th>
-                                        <th>
-                                            Salary
-                                        </th>
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Acıklama"]">Açıklama</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Toplam2019"]">Toplam 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Toplam2020"]">Toplam 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Erkek2019"]">Erkek 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Erkek2020"]">Erkek 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Kadın2019"]">Kadın 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Kadın2020"]">Kadın 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ToplamOran2019"]">Toplam Oran 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ToplamOran2020"]">Toplam Oran 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ErkekOran2019"]">Erkek Oran 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ErkekOran2020"]">Erkek Oran 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2019"]">Kadın Oran 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                </th>
+
+                                                <th></th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    1
-                                                </td>
-                                                <td>
-                                                    Dakota Rice
-                                                </td>
-                                                <td>
-                                                    Niger
-                                                </td>
-                                                <td>
-                                                    Oud-Turnhout
-                                                </td>
-                                                <td class="text-primary">
-                                                    $36,738
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2
-                                                </td>
-                                                <td>
-                                                    Minerva Hooper
-                                                </td>
-                                                <td>
-                                                    Curaçao
-                                                </td>
-                                                <td>
-                                                    Sinaai-Waas
-                                                </td>
-                                                <td class="text-primary">
-                                                    $23,789
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    3
-                                                </td>
-                                                <td>
-                                                    Sage Rodriguez
-                                                </td>
-                                                <td>
-                                                    Netherlands
-                                                </td>
-                                                <td>
-                                                    Baileux
-                                                </td>
-                                                <td class="text-primary">
-                                                    $56,142
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    4
-                                                </td>
-                                                <td>
-                                                    Philip Chaney
-                                                </td>
-                                                <td>
-                                                    Korea, South
-                                                </td>
-                                                <td>
-                                                    Overland Park
-                                                </td>
-                                                <td class="text-primary">
-                                                    $38,735
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    5
-                                                </td>
-                                                <td>
-                                                    Doris Greene
-                                                </td>
-                                                <td>
-                                                    Malawi
-                                                </td>
-                                                <td>
-                                                    Feldkirchen in Kärnten
-                                                </td>
-                                                <td class="text-primary">
-                                                    $63,542
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    6
-                                                </td>
-                                                <td>
-                                                    Mason Porter
-                                                </td>
-                                                <td>
-                                                    Chile
-                                                </td>
-                                                <td>
-                                                    Gloucester
-                                                </td>
-                                                <td class="text-primary">
-                                                    $78,615
-                                                </td>
-                                            </tr>
+                                            @foreach (var item in Model.IssizlikOraniT1)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Aciklama)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column1)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column2)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column3)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column4)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column5)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column6)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column7)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column8)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column9)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column10)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column11)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column12)
+                                                    </td>
+                                                </tr>
+                                            }
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>
                         </div>
@@ -195,127 +186,133 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead class="">
-                                        <th>
-                                            ID
-                                        </th>
-                                        <th>
-                                            Name
-                                        </th>
-                                        <th>
-                                            Country
-                                        </th>
-                                        <th>
-                                            City
-                                        </th>
-                                        <th>
-                                            Salary
-                                        </th>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Acıklama"]">Açıklama</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Toplam2019"]">Toplam 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Toplam2020"]">Toplam 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Erkek2019"]">Erkek 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Erkek2020"]">Erkek 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Kadın2019"]">Kadın 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Kadın2020"]">Kadın 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ToplamOran2019"]">Toplam Oran 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ToplamOran2020"]">Toplam Oran 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ErkekOran2019"]">Erkek Oran 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ErkekOran2020"]">Erkek Oran 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2019"]">Kadın Oran 2019</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                </th>
+                                                <th>
+                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                </th>
+
+                                                <th></th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    1
-                                                </td>
-                                                <td>
-                                                    Dakota Rice
-                                                </td>
-                                                <td>
-                                                    Niger
-                                                </td>
-                                                <td>
-                                                    Oud-Turnhout
-                                                </td>
-                                                <td>
-                                                    $36,738
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2
-                                                </td>
-                                                <td>
-                                                    Minerva Hooper
-                                                </td>
-                                                <td>
-                                                    Curaçao
-                                                </td>
-                                                <td>
-                                                    Sinaai-Waas
-                                                </td>
-                                                <td>
-                                                    $23,789
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    3
-                                                </td>
-                                                <td>
-                                                    Sage Rodriguez
-                                                </td>
-                                                <td>
-                                                    Netherlands
-                                                </td>
-                                                <td>
-                                                    Baileux
-                                                </td>
-                                                <td>
-                                                    $56,142
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    4
-                                                </td>
-                                                <td>
-                                                    Philip Chaney
-                                                </td>
-                                                <td>
-                                                    Korea, South
-                                                </td>
-                                                <td>
-                                                    Overland Park
-                                                </td>
-                                                <td>
-                                                    $38,735
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    5
-                                                </td>
-                                                <td>
-                                                    Doris Greene
-                                                </td>
-                                                <td>
-                                                    Malawi
-                                                </td>
-                                                <td>
-                                                    Feldkirchen in Kärnten
-                                                </td>
-                                                <td>
-                                                    $63,542
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    6
-                                                </td>
-                                                <td>
-                                                    Mason Porter
-                                                </td>
-                                                <td>
-                                                    Chile
-                                                </td>
-                                                <td>
-                                                    Gloucester
-                                                </td>
-                                                <td>
-                                                    $78,615
-                                                </td>
-                                            </tr>
+                                            @foreach (var item in Model.IssizlikOraniT2)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Aciklama)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column1)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column2)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column3)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column4)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column5)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column6)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column7)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column8)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column9)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column10)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column11)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column12)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column13)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column14)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column15)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column16)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column17)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Column18)
+                                                    </td>
+                                                </tr>
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -325,41 +322,6 @@
                 </div>
             </div>
         </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="float-left">
-                    <ul>
-                        <li>
-                            <a href="https://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://creative-tim.com/presentation">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright float-right">
-                    &copy;
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>, made with <i class="material-icons">favorite</i> by
-                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-                </div>
-            </div>
-        </footer>
     </div>
 </div>
 <div class="fixed-plugin">

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using StudentSystemWeb.Models;
 using TuikProject.Models;
 
 namespace TuikProject.Data
@@ -12,10 +11,8 @@ namespace TuikProject.Data
         {
         }
 
-        public DbSet<Title> Titles { get; set; }
-        public DbSet<IssizlikOrani> IssizlikOraniTablo1 { get; set; }
-        public DbSet<IssizlikOraniT2> IssizlikOraniTablo2 { get; set; }
-
-
+        public DbSet<IssizlikOrani> IssizlikOrani { get; set; }
+        public DbSet<IssizlikOraniT1> IssizlikOraniT1 { get; set; }
+        public DbSet<IssizlikOraniT2> IssizlikOraniT2 { get; set; }
     }
 }

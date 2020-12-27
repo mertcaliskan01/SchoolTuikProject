@@ -20,28 +20,28 @@ namespace TuikProject.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.IssizlikOraniTablo2.ToListAsync());
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.IssizlikOraniTablo2.ToListAsync());
+        //}
 
-        // GET: IssizlikOraniT2/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //// GET: IssizlikOraniT2/Details/5
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var issizlikOraniT2 = await _context.IssizlikOraniTablo2
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (issizlikOraniT2 == null)
-            {
-                return NotFound();
-            }
+        //    var issizlikOraniT2 = await _context.IssizlikOraniTablo2
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (issizlikOraniT2 == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(issizlikOraniT2);
-        }
+        //    return View(issizlikOraniT2);
+        //}
 
     }
 }
