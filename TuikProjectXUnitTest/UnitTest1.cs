@@ -79,13 +79,6 @@ namespace TuikProjectXUnitTest
 
         }
 
-        [Theory(DisplayName = "Add New Resource List")]
-        [InlineData("RL1")]
-        public async void TestAdd(string expectedName)
-        {
-
-        }
-
         //[Fact]
         //public async void DbHelper_GetIssizlikOraniT1()
         //{
