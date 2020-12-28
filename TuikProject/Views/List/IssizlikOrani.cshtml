@@ -22,13 +22,13 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="~/Home/Tables">
+                <li class="nav-item">
+                    <a class="nav-link" href="~/Home/Titles">
                         <i class="material-icons">content_paste</i>
                         <p>Table List</p>
                     </a>
                 </li>
-                <li class="nav-item accordion">
+                <li class="nav-item active">
                     <a class="nav-link">
                         <i class="material-icons">content_paste</i>
                         <p>İşsizlik Oranı</p>
@@ -54,7 +54,18 @@
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">All Tables</a>
+                    <form asp-action="IssizlikOrani" method="get">
+                        <div class="form-actions no-color">
+                            <h4 class="navbar-brand">
+                                İşgücü İstatistikleri, Eylül 2020
+                            </h4>
+                            <p>
+                                Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                                <input type="submit" value="Search" class="btn btn-default" /> |
+                                <a asp-action="IssizlikOrani">Back to Full List</a>
+                            </p>
+                        </div>
+                    </form>
                 </div>
             </div>
         </nav>
@@ -65,62 +76,52 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title ">Simple Table</h4>
-                                <p class="card-category"> Here is a subtitle for this table</p>
+                                <h4 class="card-title ">İşsizlik Oranı</h4>
+                                <p class="card-category"> İşteki durum ve ekonomik faaliyete göre istihdam edilenler</p>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <form asp-action="IssizlikOrani" method="get">
-                                        <div class="form-actions no-color">
-                                            <p>
-                                                Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
-                                                <input type="submit" value="Search" class="btn btn-default" /> |
-                                                <a asp-action="IssizlikOrani">Back to Full List</a>
-                                            </p>
-                                        </div>
-                                    </form>
-
                                     <table class="table">
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Acıklama"]">Açıklama</a>
+                                                    <a>Açıklama</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Toplam2019"]">Toplam 2019</a>
+                                                    <a>Toplam 2019</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Toplam2020"]">Toplam 2020</a>
+                                                    <a>Toplam 2020</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Erkek2019"]">Erkek 2019</a>
+                                                    <a>Erkek 2019</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Erkek2020"]">Erkek 2020</a>
+                                                    <a">Erkek 2020</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Kadın2019"]">Kadın 2019</a>
+                                                    <a>Kadın 2019</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Kadın2020"]">Kadın 2020</a>
+                                                    <a>Kadın 2020</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ToplamOran2019"]">Toplam Oran 2019</a>
+                                                    <a>Toplam Oran 2019</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ToplamOran2020"]">Toplam Oran 2020</a>
+                                                    <a>Toplam Oran 2020</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ErkekOran2019"]">Erkek Oran 2019</a>
+                                                    <a>Erkek Oran 2019</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ErkekOran2020"]">Erkek Oran 2020</a>
+                                                    <a>Erkek Oran 2020</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2019"]">Kadın Oran 2019</a>
+                                                    <a>Kadın Oran 2019</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                    <a>Kadın Oran 2020</a>
                                                 </th>
 
                                                 <th></th>
@@ -179,10 +180,10 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="card card-plain">
+                        <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title mt-0"> Table on Plain Background</h4>
-                                <p class="card-category"> Here is a subtitle for this table</p>
+                                <h4 class="card-title"> İşsizlik Oranı</h4>
+                                <p class="card-category"> İstihdam edilenlerin sosyal güvenlik kuruluşuna kayıtlılık durumu</p>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -190,61 +191,136 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Acıklama"]">Açıklama</a>
+                                                    <a>Açıklama</a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Toplam2019"]">Toplam 2019</a>
+                                                    <a>
+                                                        İstihdam
+                                                        2019
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Toplam2020"]">Toplam 2020</a>
+                                                    <a>
+                                                        İstihdam
+                                                        2020
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Erkek2019"]">Erkek 2019</a>
+                                                    <a>
+                                                        Toplam
+                                                        Kayıt dışı
+                                                        2019
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Erkek2020"]">Erkek 2020</a>
+                                                    <a">
+                                                        Toplam
+                                                        Kayıt dışı
+                                                        2020
+                                                        </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Kadın2019"]">Kadın 2019</a>
+                                                    <a>
+                                                        Oran (%)
+                                                        Kayıt dışı
+                                                        2019
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["Kadın2020"]">Kadın 2020</a>
+                                                    <a>
+                                                        Oran (%)
+                                                        Kayıt dışı
+                                                        2020
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ToplamOran2019"]">Toplam Oran 2019</a>
+                                                    <a>
+                                                        Erkek
+                                                        İstihdam
+                                                        2019
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ToplamOran2020"]">Toplam Oran 2020</a>
+                                                    <a>
+                                                        Erkek
+                                                        İstihdam
+                                                        2020
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ErkekOran2019"]">Erkek Oran 2019</a>
+                                                    <a>
+                                                        Erkek
+                                                        Kayıt dışı
+                                                        2019
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["ErkekOran2020"]">Erkek Oran 2020</a>
+                                                    <a>
+                                                        Erkek
+                                                        Kayıt dışı
+                                                        2020
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2019"]">Kadın Oran 2019</a>
+                                                    <a>
+                                                        Oran (%)
+                                                        Erkek
+                                                        Kayıt dışı
+                                                        2019
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                    <a>
+                                                        Oran (%)
+                                                        Erkek
+                                                        Kayıt dışı
+                                                        2020
+                                                    </a>
+                                                </th>
+
+                                                <th>
+                                                    <a>
+                                                        Kadın
+                                                        İstihdam
+                                                        2019
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                    <a>
+                                                        Kadın
+                                                        İstihdam
+                                                        2020
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                    <a>
+                                                        Kadın
+                                                        Kayıt dışı
+                                                        2019
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                    <a>
+                                                        Kadın
+                                                        Kayıt dışı
+                                                        2020
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                    <a>
+                                                        Kadın (%)
+                                                        Erkek
+                                                        Kayıt dışı
+                                                        2019
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
-                                                </th>
-                                                <th>
-                                                    <a asp-action="Details" asp-route-sortOrder="@ViewData["KadınOran2020"]">Kadın Oran 2020</a>
+                                                    <a>
+                                                        Kadın (%)
+                                                        Erkek
+                                                        Kayıt dışı
+                                                        2020
+                                                    </a>
                                                 </th>
 
                                                 <th></th>

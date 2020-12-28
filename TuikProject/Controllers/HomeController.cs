@@ -192,11 +192,20 @@ namespace TuikProject.Controllers
 
         public ActionResult Download(string fileName)
         {
-            string Files = "wwwroot/UploadExcel/"+fileName+ ".xls";
-            byte[] fileBytes = System.IO.File.ReadAllBytes(Files);
-            System.IO.File.WriteAllBytes(Files, fileBytes);
-            MemoryStream ms = new MemoryStream(fileBytes);
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName+ ".xls");
+            ActionResult actionResult = null;
+            try
+            {
+                string Files = "wwwroot/UploadExcel/" + fileName + ".xls";
+                byte[] fileBytes = System.IO.File.ReadAllBytes(Files);
+                System.IO.File.WriteAllBytes(Files, fileBytes);
+                MemoryStream ms = new MemoryStream(fileBytes);
+                actionResult = File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName + ".xls");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return actionResult;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
