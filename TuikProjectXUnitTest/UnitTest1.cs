@@ -1,14 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Moq;
-using NPOI.OpenXml4Net.OPC;
-using System;
+using System.Collections.Generic;
 using System.Linq;
-using TuikProject.Controllers;
 using TuikProject.Data;
 using TuikProject.Helper;
-using TuikProject.Models;
+using TuikProject.Models.IssizlikOraniModels;
+using TuikProject.Models.TüketiciFiyatEndeksiModels;
 using Xunit;
 
 namespace TuikProjectXUnitTest
@@ -16,26 +13,9 @@ namespace TuikProjectXUnitTest
     public class UnitTest1
     {
 
-        //public BooksControllerTest()
-        //{
-        //    InitContext();
-        //}
 
-        //private ApplicationDbContext _booksContext;
-
-        //public void InitContext()
-        //{
-        //    var builder = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase();
-
-        //    var context = new ApplicationDbContext(builder.Options);
-        //    var books = Enumerable.Range(1, 10)
-        //        .Select(i => new Book { BookId = i, Title = $"Sample{i}", Publisher = "Wrox Press" });
-        //    context.Books.AddRange(books);
-        //    int changed = context.SaveChanges();
-
-        //}
         [Fact]
-        public void DbHelper_GetIssizlikOraniT1()
+        public void DbHelper_GetÝþtekiDurumVeEkonomikFaaliyet()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
 
@@ -43,21 +23,23 @@ namespace TuikProjectXUnitTest
             {
                 var controller = new DbHelper(context);
 
-                var issizlikOraniT1 = Enumerable.Range(1, 10)
-                    .Select(i => new ÝþtekiDurumVeEkonomikFaaliyet { Id = i, Column1 = $"Sample{i}", Column2 = "Wrox Press" });
-                context.IssizlikOraniT1.AddRange(issizlikOraniT1);
+                var ÝþtekiDurumVeEkonomikFaaliyet = Enumerable.Range(1, 10)
+                    .Select(i => new ÝþtekiDurumVeEkonomikFaaliyet { Id = i, Aciklama = $"ExampleData{i}" });
+                context.ÝþtekiDurumVeEkonomikFaaliyet.AddRange(ÝþtekiDurumVeEkonomikFaaliyet);
                 int changed = context.SaveChanges();
 
                 // Act
-                var result = controller.getIssizlikOraniT1();
+                var result = controller.getÝþtekiDurumVeEkonomikFaaliyet();
 
                 // Assert
                 Assert.NotNull(result);
+                Assert.False(result.Count().Equals(0));
             }
 
         }
+
         [Fact]
-        public void DbHelper_GetIssizlikOraniT2()
+        public void DbHelper_GetSosyalGüvenlikKuruluþunaKayitlilik()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
 
@@ -65,75 +47,93 @@ namespace TuikProjectXUnitTest
             {
                 var controller = new DbHelper(context);
 
-                var issizlikOraniT2 = Enumerable.Range(1, 10)
-                    .Select(i => new SosyalGüvenlikKuruluþunaKayitlilik { Id = i, Column1 = $"Sample{i}", Column2 = "Wrox Press" });
-                context.IssizlikOraniT2.AddRange(issizlikOraniT2);
+                var SosyalGüvenlikKuruluþunaKayitlilik = Enumerable.Range(1, 10)
+                    .Select(i => new SosyalGüvenlikKuruluþunaKayitlilik { Id = i, Aciklama = $"ExampleData{i}" });
+                context.SosyalGüvenlikKuruluþunaKayitlilik.AddRange(SosyalGüvenlikKuruluþunaKayitlilik);
                 int changed = context.SaveChanges();
 
                 // Act
-                var result = controller.getIssizlikOraniT2();
+                var result = controller.getSosyalGüvenlikKuruluþunaKayitlilik();
 
                 // Assert
                 Assert.NotNull(result);
+                Assert.False(result.Count().Equals(0));
             }
 
         }
 
-        //[Fact]
-        //public async void DbHelper_GetIssizlikOraniT1()
-        //{
-        //    var dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
+        [Fact]
+        public void DbHelper_GetÝstatistikiBolgeBirimleriSiniflamasi()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+
+            using (var context = new ApplicationDbContext(options))
+            {
+                var controller = new DbHelper(context);
+
+                var istatistikiBolgeBirimleriSiniflamasi = Enumerable.Range(1, 10)
+                    .Select(i => new ÝstatistikiBolgeBirimleriSiniflamasi { Id = i, Aciklama = $"ExampleData{i}" });
+                context.ÝstatistikiBolgeBirimleriSiniflamasi.AddRange(istatistikiBolgeBirimleriSiniflamasi);
+                int changed = context.SaveChanges();
+
+                // Act
+                var result = controller.getÝstatistikiBolgeBirimleriSiniflamasi();
+
+                // Assert
+                Assert.NotNull(result);
+                Assert.False(result.Count().Equals(0));
+            }
+
+        }
 
 
+        [Fact]
+        public void DbHelper_GetAnaHarcamaGruplari()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
 
-        //    var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-        //    optionsBuilder.UseInMemoryDatabase();
-        //    var _dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            using (var context = new ApplicationDbContext(options))
+            {
+                var controller = new DbHelper(context);
 
-        //    var controller = new DbHelper(_dbContext);
+                var anaHarcamaGruplari = Enumerable.Range(1, 10)
+                    .Select(i => new AnaHarcamaGruplari { Id = i, Agirliklari = $"ExampleData{i}" });
+                context.AnaHarcamaGruplari.AddRange(anaHarcamaGruplari);
+                int changed = context.SaveChanges();
 
-        //    // Act
-        //    var result = controller.getIssizlikOraniT1();
+                // Act
+                var result = controller.getAnaHarcamaGruplari();
 
-        //    // Assert
-        //    Assert.NotNull(result);
-        //}
+                // Assert
+                Assert.NotNull(result);
+                Assert.False(result.Count().Equals(0));
+            }
 
-        //[Fact]
-        //public void Index_ReturnsViewResultWithNoModel()
-        //{
-        //    // Arrange
-        //    var mockLogger = new Mock<ILogger<HomeController>>();
-        //    ApplicationDbContext context = new ApplicationDbContext(m);
-        //    var controller = new HomeController(context, mockLogger.Object, mockLogger.Object);
+        }
 
-        //    // Act
-        //    var result = controller.Index();
 
-        //    // Assert correct non-null View returned with no Model
-        //    var viewResult = Assert.IsType<ViewResult>(result);
-        //    Assert.NotNull(viewResult);
-        //    Assert.Equal(nameof(controller.Index), viewResult.ViewName);
-        //    Assert.NotNull(viewResult.ViewData);
-        //    Assert.Null(viewResult.ViewData.Model);
-        //}
+        [Fact]
+        public void DbHelper_GetTüketiciFiyatEndeksiVeDeðiþimOranlarý()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
 
-        //[Fact]
-        //public void Privacy_ReturnsViewResultWithNoModel()
-        //{
-        //    // Arrange
-        //    var mockLogger = new Mock<ILogger<HomeController>>();
-        //    var controller = new HomeController(mockLogger.Object);
+            using (var context = new ApplicationDbContext(options))
+            {
+                var controller = new DbHelper(context);
 
-        //    // Act
-        //    var result = controller.Privacy();
+                var tüketiciFiyatEndeksiVeDeðiþimOranlarý = Enumerable.Range(1, 10)
+                    .Select(i => new TüketiciFiyatEndeksiVeDeðiþimOranlarý { Id = i, Aciklama = $"ExampleData{i}" });
+                context.TüketiciFiyatEndeksiVeDeðiþimOranlarý.AddRange(tüketiciFiyatEndeksiVeDeðiþimOranlarý);
+                int changed = context.SaveChanges();
 
-        //    // Assert correct non-null View returned with no Model
-        //    var viewResult = Assert.IsType<ViewResult>(result);
-        //    Assert.NotNull(viewResult);
-        //    Assert.Equal(nameof(controller.Privacy), viewResult.ViewName);
-        //    Assert.NotNull(viewResult.ViewData);
-        //    Assert.Null(viewResult.ViewData.Model);
-        //}
+                // Act
+                var result = controller.getTüketiciFiyatEndeksiVeDeðiþimOranlarý();
+
+                // Assert
+                Assert.NotNull(result);
+                Assert.False(result.Count().Equals(0));
+            }
+
+        }
     }
 }
