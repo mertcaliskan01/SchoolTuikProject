@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TuikProject.Data;
 using TuikProject.Models;
+using TuikProject.Models.TüketiciFiyatEndeksiModels;
 
 namespace TuikProject.Helper
 {
@@ -36,7 +36,6 @@ namespace TuikProject.Helper
             GC.SuppressFinalize(this);
         }
 
-
         public IEnumerable<IssizlikOraniT1> getIssizlikOraniT1()
         {
             var list = _context.IssizlikOraniT1.ToList();
@@ -51,9 +50,24 @@ namespace TuikProject.Helper
             return list;
         }
 
+        public IEnumerable<İstatistikiBolgeBirimleriSiniflamasi> getİstatistikiBolgeBirimleriSiniflamasi()
+        {
+            var list = _context.İstatistikiBolgeBirimleriSiniflamasi.ToList();
 
+            return list;
+        }
+        public IEnumerable<AnaHarcamaGruplari> getAnaHarcamaGruplari()
+        {
+            var list = _context.AnaHarcamaGruplari.ToList();
 
+            return list;
+        }
+        public IEnumerable<TüketiciFiyatEndeksiVeDeğişimOranları> getTüketiciFiyatEndeksiVeDeğişimOranları()
+        {
+            var list = _context.TüketiciFiyatEndeksiVeDeğişimOranları.ToList();
 
+            return list;
+        }
 
     }
 }

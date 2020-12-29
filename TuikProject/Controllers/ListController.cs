@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TuikProject.Data;
 using TuikProject.Helper;
 using TuikProject.Models;
+using TuikProject.Models.TüketiciFiyatEndeksiModels;
 
 namespace TuikProject.Controllers
 {
@@ -31,6 +32,22 @@ namespace TuikProject.Controllers
                 mymodel.IssizlikOraniT2 = mymodelT2;
             }
 
+            return View(mymodel);
+        }
+
+        public IActionResult TuketiciFiyatEndeksiYillik()
+        {
+            var mymodel = new TüketiciFiyatEndeksi();
+
+            using (var helper = new DbHelper(_context))
+            {
+                var mymodelT1 = helper.getİstatistikiBolgeBirimleriSiniflamasi();
+                var mymodelT2 = helper.getAnaHarcamaGruplari();
+                var mymodelT3 = helper.getTüketiciFiyatEndeksiVeDeğişimOranları();
+                mymodel.İstatistikiBolgeBirimleriSiniflamasi = mymodelT1;
+                mymodel.AnaHarcamaGruplari = mymodelT2;
+                mymodel.TüketiciFiyatEndeksiVeDeğişimOranları = mymodelT3;
+            }
             return View(mymodel);
         }
 
