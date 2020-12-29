@@ -44,7 +44,7 @@ namespace TuikProjectXUnitTest
                 var controller = new DbHelper(context);
 
                 var issizlikOraniT1 = Enumerable.Range(1, 10)
-                    .Select(i => new IssizlikOraniT1 { Id = i, Column1 = $"Sample{i}", Column2 = "Wrox Press" });
+                    .Select(i => new ÝþtekiDurumVeEkonomikFaaliyet { Id = i, Column1 = $"Sample{i}", Column2 = "Wrox Press" });
                 context.IssizlikOraniT1.AddRange(issizlikOraniT1);
                 int changed = context.SaveChanges();
 
@@ -66,7 +66,7 @@ namespace TuikProjectXUnitTest
                 var controller = new DbHelper(context);
 
                 var issizlikOraniT2 = Enumerable.Range(1, 10)
-                    .Select(i => new IssizlikOraniT2 { Id = i, Column1 = $"Sample{i}", Column2 = "Wrox Press" });
+                    .Select(i => new SosyalGüvenlikKuruluþunaKayitlilik { Id = i, Column1 = $"Sample{i}", Column2 = "Wrox Press" });
                 context.IssizlikOraniT2.AddRange(issizlikOraniT2);
                 int changed = context.SaveChanges();
 

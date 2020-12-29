@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TuikProject.Models;
+using TuikProject.Models.IssizlikOraniModels;
 using TuikProject.Models.TüketiciFiyatEndeksiModels;
 
 namespace TuikProject.Data
@@ -12,9 +13,8 @@ namespace TuikProject.Data
         {
         }
 
-        public DbSet<IssizlikOrani> IssizlikOrani { get; set; }
-        public DbSet<IssizlikOraniT1> IssizlikOraniT1 { get; set; }
-        public DbSet<IssizlikOraniT2> IssizlikOraniT2 { get; set; }
+        public DbSet<İştekiDurumVeEkonomikFaaliyet> İştekiDurumVeEkonomikFaaliyet { get; set; }
+        public DbSet<SosyalGüvenlikKuruluşunaKayitlilik> SosyalGüvenlikKuruluşunaKayitlilik { get; set; }
 
         public DbSet<İstatistikiBolgeBirimleriSiniflamasi> İstatistikiBolgeBirimleriSiniflamasi { get; set; }
         public DbSet<AnaHarcamaGruplari> AnaHarcamaGruplari { get; set; }

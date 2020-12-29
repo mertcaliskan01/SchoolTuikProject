@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TuikProject.Data;
 using TuikProject.Models;
+using TuikProject.Models.IssizlikOraniModels;
 using TuikProject.Models.TüketiciFiyatEndeksiModels;
 
 namespace TuikProject.Helper
@@ -36,16 +37,16 @@ namespace TuikProject.Helper
             GC.SuppressFinalize(this);
         }
 
-        public IEnumerable<IssizlikOraniT1> getIssizlikOraniT1()
+        public IEnumerable<İştekiDurumVeEkonomikFaaliyet> getİştekiDurumVeEkonomikFaaliyet()
         {
-            var list = _context.IssizlikOraniT1.ToList();
+            var list = _context.İştekiDurumVeEkonomikFaaliyet.ToList();
             return list;
 
         }
 
-        public IEnumerable<IssizlikOraniT2> getIssizlikOraniT2()
+        public IEnumerable<SosyalGüvenlikKuruluşunaKayitlilik> getSosyalGüvenlikKuruluşunaKayitlilik()
         {
-            var list = _context.IssizlikOraniT2.ToList();
+            var list = _context.SosyalGüvenlikKuruluşunaKayitlilik.ToList();
 
             return list;
         }
