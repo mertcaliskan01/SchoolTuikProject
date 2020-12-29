@@ -30,10 +30,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <None Include="wwwroot\img\resimler\gsyh.png" />
+    <None Include="wwwroot\img\resimler\issizlik.png" />
+    <None Include="wwwroot\img\resimler\sanuren.png" />
+    <None Include="wwwroot\img\resimler\tozpembeduvar.jpg" />
+    <None Include="wwwroot\img\resimler\tufe.png" />
     <None Include="wwwroot\js\core\bootstrap-material-design.min.js" />
     <None Include="wwwroot\js\core\jquery.min.js" />
     <None Include="wwwroot\js\core\popper.min.js" />
