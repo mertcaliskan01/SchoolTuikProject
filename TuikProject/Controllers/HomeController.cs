@@ -120,7 +120,7 @@ namespace TuikProject.Controllers
         public async Task<IActionResult> Export()
         {
             var memory = new MemoryStream();
-            string sFileName = @"Employees.xlsx";
+            string sFileName = @"Example.xlsx";
             try
             {
                 string sWebRootFolder = _hostEnvironment.WebRootPath;
@@ -130,49 +130,21 @@ namespace TuikProject.Controllers
                 {
                     IWorkbook workbook;
                     workbook = new XSSFWorkbook();
-                    ISheet excelSheet = workbook.CreateSheet("employee");
+                    ISheet excelSheet = workbook.CreateSheet("Test");
                     IRow row = excelSheet.CreateRow(0);
 
-                    row.CreateCell(0).SetCellValue("EmployeeId");
-                    row.CreateCell(1).SetCellValue("EmployeeName");
-                    row.CreateCell(2).SetCellValue("Age");
-                    row.CreateCell(3).SetCellValue("Sex");
-                    row.CreateCell(4).SetCellValue("Designation");
+                    row.CreateCell(0).SetCellValue("Test");
+                    row.CreateCell(1).SetCellValue("Test");
+                    row.CreateCell(2).SetCellValue("Test");
+                    row.CreateCell(3).SetCellValue("Test");
+                    row.CreateCell(4).SetCellValue("Test");
 
                     row = excelSheet.CreateRow(1);
                     row.CreateCell(0).SetCellValue(1);
-                    row.CreateCell(1).SetCellValue("Jack Supreu");
-                    row.CreateCell(2).SetCellValue(45);
-                    row.CreateCell(3).SetCellValue("Male");
-                    row.CreateCell(4).SetCellValue("Solution Architect");
-
-                    row = excelSheet.CreateRow(2);
-                    row.CreateCell(0).SetCellValue(2);
-                    row.CreateCell(1).SetCellValue("Steve khan");
-                    row.CreateCell(2).SetCellValue(33);
-                    row.CreateCell(3).SetCellValue("Male");
-                    row.CreateCell(4).SetCellValue("Software Engineer");
-
-                    row = excelSheet.CreateRow(3);
-                    row.CreateCell(0).SetCellValue(3);
-                    row.CreateCell(1).SetCellValue("Romi gill");
-                    row.CreateCell(2).SetCellValue(25);
-                    row.CreateCell(3).SetCellValue("FeMale");
-                    row.CreateCell(4).SetCellValue("Junior Consultant");
-
-                    row = excelSheet.CreateRow(4);
-                    row.CreateCell(0).SetCellValue(4);
-                    row.CreateCell(1).SetCellValue("Hider Ali");
-                    row.CreateCell(2).SetCellValue(34);
-                    row.CreateCell(3).SetCellValue("Male");
-                    row.CreateCell(4).SetCellValue("Accountant");
-
-                    row = excelSheet.CreateRow(5);
-                    row.CreateCell(0).SetCellValue(5);
-                    row.CreateCell(1).SetCellValue("Mathew");
-                    row.CreateCell(2).SetCellValue(48);
-                    row.CreateCell(3).SetCellValue("Male");
-                    row.CreateCell(4).SetCellValue("Human Resource");
+                    row.CreateCell(1).SetCellValue("Test");
+                    row.CreateCell(2).SetCellValue(23);
+                    row.CreateCell(3).SetCellValue("Test");
+                    row.CreateCell(4).SetCellValue("Test");
 
                     workbook.Write(fs);
                 }
