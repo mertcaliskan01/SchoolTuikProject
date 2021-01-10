@@ -20,33 +20,46 @@ namespace TuikProject.Controllers
             _context = context;
         }
 
-        public IActionResult IssizlikOrani()
+        public IActionResult IssizlikOrani(string searchString)
         {
+            ViewData["CurrentFilter"] = searchString;
             var mymodel = new IssizlikOrani();
-
             using (var helper = new DbHelper(_context))
             {
-                var mymodelT1 = helper.getİştekiDurumVeEkonomikFaaliyet();
-                var mymodelT2 = helper.getSosyalGüvenlikKuruluşunaKayitlilik();
-                mymodel.İştekiDurumVeEkonomikFaaliyet = mymodelT1;
-                mymodel.SosyalGüvenlikKuruluşunaKayitlilik = mymodelT2;
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    mymodel.İştekiDurumVeEkonomikFaaliyet = helper.getİştekiDurumVeEkonomikFaaliyet(searchString);
+                    mymodel.SosyalGüvenlikKuruluşunaKayitlilik = helper.getSosyalGüvenlikKuruluşunaKayitlilik(searchString);
+                }
+                else
+                {
+                    mymodel.İştekiDurumVeEkonomikFaaliyet = helper.getİştekiDurumVeEkonomikFaaliyet();
+                    mymodel.SosyalGüvenlikKuruluşunaKayitlilik = helper.getSosyalGüvenlikKuruluşunaKayitlilik();
+                }
             }
-
             return View(mymodel);
         }
 
-        public IActionResult TuketiciFiyatEndeksiYillik()
+        public IActionResult TuketiciFiyatEndeksiYillik(string searchString)
         {
             var mymodel = new TüketiciFiyatEndeksi();
 
             using (var helper = new DbHelper(_context))
             {
-                var mymodelT1 = helper.getİstatistikiBolgeBirimleriSiniflamasi();
-                var mymodelT2 = helper.getAnaHarcamaGruplari();
-                var mymodelT3 = helper.getTüketiciFiyatEndeksiVeDeğişimOranları();
-                mymodel.İstatistikiBolgeBirimleriSiniflamasi = mymodelT1;
-                mymodel.AnaHarcamaGruplari = mymodelT2;
-                mymodel.TüketiciFiyatEndeksiVeDeğişimOranları = mymodelT3;
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    mymodel.İstatistikiBolgeBirimleriSiniflamasi = helper.getİstatistikiBolgeBirimleriSiniflamasi(searchString);
+                    mymodel.AnaHarcamaGruplari = helper.getAnaHarcamaGruplari(searchString);
+                    mymodel.TüketiciFiyatEndeksiVeDeğişimOranları = helper.getTüketiciFiyatEndeksiVeDeğişimOranları(searchString);
+                }
+                else
+                {
+                    mymodel.İstatistikiBolgeBirimleriSiniflamasi = helper.getİstatistikiBolgeBirimleriSiniflamasi();
+                    mymodel.AnaHarcamaGruplari = helper.getAnaHarcamaGruplari();
+                    mymodel.TüketiciFiyatEndeksiVeDeğişimOranları = helper.getTüketiciFiyatEndeksiVeDeğişimOranları();
+                }
+
+
             }
             return View(mymodel);
         }

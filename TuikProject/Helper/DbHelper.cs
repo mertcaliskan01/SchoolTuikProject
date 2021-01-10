@@ -39,35 +39,46 @@ namespace TuikProject.Helper
 
         public IEnumerable<İştekiDurumVeEkonomikFaaliyet> getİştekiDurumVeEkonomikFaaliyet()
         {
-            var list = _context.İştekiDurumVeEkonomikFaaliyet.ToList();
-            return list;
+            return _context.İştekiDurumVeEkonomikFaaliyet.ToList();
+        }
 
+        public IEnumerable<İştekiDurumVeEkonomikFaaliyet> getİştekiDurumVeEkonomikFaaliyet(string searchString)
+        {
+            return _context.İştekiDurumVeEkonomikFaaliyet.Where(s => s.Aciklama.Contains(searchString)).ToList();
         }
 
         public IEnumerable<SosyalGüvenlikKuruluşunaKayitlilik> getSosyalGüvenlikKuruluşunaKayitlilik()
         {
-            var list = _context.SosyalGüvenlikKuruluşunaKayitlilik.ToList();
-
-            return list;
+            return _context.SosyalGüvenlikKuruluşunaKayitlilik.ToList();
+        }
+        public IEnumerable<SosyalGüvenlikKuruluşunaKayitlilik> getSosyalGüvenlikKuruluşunaKayitlilik(string searchString)
+        {
+            return _context.SosyalGüvenlikKuruluşunaKayitlilik.Where(s => s.Aciklama.Contains(searchString)).ToList();
         }
 
         public IEnumerable<İstatistikiBolgeBirimleriSiniflamasi> getİstatistikiBolgeBirimleriSiniflamasi()
         {
-            var list = _context.İstatistikiBolgeBirimleriSiniflamasi.ToList();
-
-            return list;
+            return _context.İstatistikiBolgeBirimleriSiniflamasi.ToList();
+        }
+        public IEnumerable<İstatistikiBolgeBirimleriSiniflamasi> getİstatistikiBolgeBirimleriSiniflamasi(string searchString)
+        {
+            return _context.İstatistikiBolgeBirimleriSiniflamasi.Where(s => s.Aciklama.Contains(searchString)).ToList();
         }
         public IEnumerable<AnaHarcamaGruplari> getAnaHarcamaGruplari()
         {
-            var list = _context.AnaHarcamaGruplari.ToList();
-
-            return list;
+            return _context.AnaHarcamaGruplari.ToList();
+        }
+        public IEnumerable<AnaHarcamaGruplari> getAnaHarcamaGruplari(string searchString)
+        {
+            return _context.AnaHarcamaGruplari.Where(s => s.HarcamaGruplari.Contains(searchString)).ToList();
         }
         public IEnumerable<TüketiciFiyatEndeksiVeDeğişimOranları> getTüketiciFiyatEndeksiVeDeğişimOranları()
         {
-            var list = _context.TüketiciFiyatEndeksiVeDeğişimOranları.ToList();
-
-            return list;
+            return _context.TüketiciFiyatEndeksiVeDeğişimOranları.ToList();
+        }
+        public IEnumerable<TüketiciFiyatEndeksiVeDeğişimOranları> getTüketiciFiyatEndeksiVeDeğişimOranları(string searchString)
+        {
+            return _context.TüketiciFiyatEndeksiVeDeğişimOranları.Where(s => s.Aciklama.Contains(searchString)).ToList();
         }
 
     }
