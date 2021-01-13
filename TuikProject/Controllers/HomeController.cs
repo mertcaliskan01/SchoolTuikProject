@@ -81,7 +81,7 @@ namespace TuikProject.Controllers
                             sheet = hssfwb.GetSheetAt(0); //get first sheet from workbook   
                         }
                         IRow headerRow = sheet.GetRow(0); //Get Header Row
-                        int cellCount = headerRow.LastCellNum;
+                        int cellCount = 25;
                         sb.Append("<table class='table table-bordered'><tr>");
                         for (int j = 0; j < cellCount; j++)
                         {
