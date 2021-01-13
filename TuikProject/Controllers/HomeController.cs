@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -7,12 +6,10 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using TuikProject.Data;
 using TuikProject.Models;
 
@@ -115,50 +112,6 @@ namespace TuikProject.Controllers
                 Console.WriteLine(ex);
             }
             return this.Content(sb.ToString());
-        }
-
-        public async Task<IActionResult> Export()
-        {
-            var memory = new MemoryStream();
-            string sFileName = @"Example.xlsx";
-            try
-            {
-                string sWebRootFolder = _hostEnvironment.WebRootPath;
-                string URL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, sFileName);
-                FileInfo file = new FileInfo(Path.Combine(sWebRootFolder, sFileName));
-                using (var fs = new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Create, FileAccess.Write))
-                {
-                    IWorkbook workbook;
-                    workbook = new XSSFWorkbook();
-                    ISheet excelSheet = workbook.CreateSheet("Test");
-                    IRow row = excelSheet.CreateRow(0);
-
-                    row.CreateCell(0).SetCellValue("Test");
-                    row.CreateCell(1).SetCellValue("Test");
-                    row.CreateCell(2).SetCellValue("Test");
-                    row.CreateCell(3).SetCellValue("Test");
-                    row.CreateCell(4).SetCellValue("Test");
-
-                    row = excelSheet.CreateRow(1);
-                    row.CreateCell(0).SetCellValue(1);
-                    row.CreateCell(1).SetCellValue("Test");
-                    row.CreateCell(2).SetCellValue(23);
-                    row.CreateCell(3).SetCellValue("Test");
-                    row.CreateCell(4).SetCellValue("Test");
-
-                    workbook.Write(fs);
-                }
-                using (var stream = new FileStream(Path.Combine(sWebRootFolder, sFileName), FileMode.Open))
-                {
-                    await stream.CopyToAsync(memory);
-                }
-                memory.Position = 0;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            return File(memory, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", sFileName);
         }
 
 

@@ -63,9 +63,11 @@
                                 Find : <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
                                 <input type="submit" value="Search" class="btn btn-default" /> |
                                 <a asp-action="IssizlikOrani">Back to Full List</a>
+                                <input type="submit" name="IssizlikOraniExport" value="Indir" class="btn btn-primary" asp-action="IssizlikOraniExport" />
                             </p>
                         </div>
                     </form>
+                   
                 </div>
             </div>
         </nav>
