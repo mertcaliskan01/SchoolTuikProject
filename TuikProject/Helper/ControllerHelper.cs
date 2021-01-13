@@ -69,5 +69,35 @@ namespace TuikProject.Helper
             return mymodel;
         }
 
+
+        public TüketiciFiyatEndeksi getTuketiciFiyatEndeksiYillik(string searchString)
+        {
+            TüketiciFiyatEndeksi mymodel = new TüketiciFiyatEndeksi();
+            try
+            {
+                using (var helper = new DbHelper(_context))
+                {
+                    if (!string.IsNullOrEmpty(searchString))
+                    {
+                        mymodel.İstatistikiBolgeBirimleriSiniflamasi = helper.getİstatistikiBolgeBirimleriSiniflamasi(searchString);
+                        mymodel.AnaHarcamaGruplari = helper.getAnaHarcamaGruplari(searchString);
+                        mymodel.TüketiciFiyatEndeksiVeDeğişimOranları = helper.getTüketiciFiyatEndeksiVeDeğişimOranları(searchString);
+                    }
+                    else
+                    {
+                        mymodel.İstatistikiBolgeBirimleriSiniflamasi = helper.getİstatistikiBolgeBirimleriSiniflamasi();
+                        mymodel.AnaHarcamaGruplari = helper.getAnaHarcamaGruplari();
+                        mymodel.TüketiciFiyatEndeksiVeDeğişimOranları = helper.getTüketiciFiyatEndeksiVeDeğişimOranları();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Hata :" + ex);
+            }
+            return mymodel;
+        }
+
+
     }
 }
