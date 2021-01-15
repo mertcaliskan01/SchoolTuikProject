@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NPOI.SS.UserModel;
@@ -19,6 +20,7 @@ using TuikProject.Models.TüketiciFiyatEndeksiModels;
 
 namespace TuikProject.Controllers
 {
+    [Authorize]
     public class ListController : Controller
     {
         private readonly ApplicationDbContext _context;
