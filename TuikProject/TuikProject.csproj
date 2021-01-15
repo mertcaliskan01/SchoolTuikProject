@@ -12,6 +12,8 @@
     <Compile Remove="Data\Migrations\20201221203655_migration4.Designer.cs" />
     <Compile Remove="Data\Migrations\20201227143007_migration1.cs" />
     <Compile Remove="Data\Migrations\20201227143007_migration1.Designer.cs" />
+    <Compile Remove="Migrations\20210115165200_migration12345.cs" />
+    <Compile Remove="Migrations\20210115165200_migration12345.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -218,6 +220,10 @@
     <None Include="wwwroot\scss\material-dashboard\_tooltip.scss" />
     <None Include="wwwroot\scss\material-dashboard\_type.scss" />
     <None Include="wwwroot\scss\material-dashboard\_variables.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using TuikProject.Models;
 using TuikProject.Models.CezaInfazKurumuIstatistikleriModels;
-using TuikProject.Models.EgitimHarcamaIstatistikleriModels;
 using TuikProject.Models.IssizlikOraniModels;
 using TuikProject.Models.KulturEkonomisiModels;
 using TuikProject.Models.SaglikHarcamalariIstatistikleriModels;
@@ -36,15 +35,6 @@ namespace TuikProject.Data
         public DbSet<SucTuruVeEgitimDurumunaGoreGirenHukumluler> SucTuruVeEgitimDurumunaGoreGirenHukumluler { get; set; }
         public DbSet<YılIcindeGirenVeCikanHukumluler> YılIcindeGirenVeCikanHukumluler { get; set; }
         public DbSet<YuzBinNufusaDusenCezaInfazKurumuNufusu> YuzBinNufusaDusenCezaInfazKurumuNufusu { get; set; }
-
-
-
-
-        public DbSet<EgitimDuzeylerineGoreOgrenciBasina> EgitimDuzeylerineGoreOgrenciBasina { get; set; }
-        public DbSet<FinansKaynagiVeEgitimDuzeylerineGore> FinansKaynagiVeEgitimDuzeylerineGore { get; set; }
-        public DbSet<HizmetSunuculariVeEgitimDuzeylerineGore> HizmetSunuculariVeEgitimDuzeylerineGore { get; set; }
-
-
 
 
         public DbSet<HarcamaTurlerineGoreHanehalkininHarcamalari> HarcamaTurlerineGoreHanehalkininHarcamalari { get; set; }

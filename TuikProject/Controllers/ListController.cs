@@ -10,7 +10,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using TuikProject.Data;
 using TuikProject.Helper;
+using TuikProject.Models.CezaInfazKurumuIstatistikleriModels;
 using TuikProject.Models.IssizlikOraniModels;
+using TuikProject.Models.KulturEkonomisiModels;
+using TuikProject.Models.SaglikHarcamalariIstatistikleriModels;
+using TuikProject.Models.SosyalKorumaIstatistikleriModels;
 using TuikProject.Models.TüketiciFiyatEndeksiModels;
 
 namespace TuikProject.Controllers
@@ -49,6 +53,52 @@ namespace TuikProject.Controllers
             }
             return View(tüketiciFiyatEndeksiModel);
         }
+
+        public IActionResult CezaInfazKurumuIstatistikleri(string searchString)
+        {
+            ViewData["CurrentFilter"] = searchString;
+            CezaInfazKurumuIstatistikleri model = new CezaInfazKurumuIstatistikleri();
+            using (var helper = new ControllerHelper(_context))
+            {
+                model = helper.getCezaInfazKurumuIstatistikleri(searchString);
+            }
+            return View(model);
+        }
+
+        public IActionResult KulturEkonomisi(string searchString)
+        {
+            ViewData["CurrentFilter"] = searchString;
+            KulturEkonomisi model = new KulturEkonomisi();
+            using (var helper = new ControllerHelper(_context))
+            {
+                model = helper.getKulturEkonomisi(searchString);
+            }
+            return View(model);
+        }
+
+        public IActionResult SaglikHarcamalariIstatistikleri(string searchString)
+        {
+            ViewData["CurrentFilter"] = searchString;
+            SaglikHarcamalariIstatistikleri model = new SaglikHarcamalariIstatistikleri();
+            using (var helper = new ControllerHelper(_context))
+            {
+                model = helper.getSaglikHarcamalariIstatistikleri(searchString);
+            }
+            return View(model);
+        }
+
+        public IActionResult SosyalKorumaIstatistikleri(string searchString)
+        {
+            ViewData["CurrentFilter"] = searchString;
+            SosyalKorumaIstatistikleri model = new SosyalKorumaIstatistikleri();
+            using (var helper = new ControllerHelper(_context))
+            {
+                model = helper.getSosyalKorumaIstatistikleri(searchString);
+            }
+            return View(model);
+        }
+
+        
 
 
         public async Task<IActionResult> IssizlikOraniExport(string searchString)
@@ -194,7 +244,6 @@ namespace TuikProject.Controllers
             }
             return File(memory, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", sFileName);
         }
-
 
         public async Task<IActionResult> TuketiciFiyatEndeksiYillikExport(string searchString)
         {
