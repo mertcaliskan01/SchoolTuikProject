@@ -14,12 +14,12 @@ using Xunit;
 
 namespace TuikProjectXUnitTest
 {
-    public class UnitTest1
+    public class UnitTest
     {
         [Fact]
         public void CezaInfazKurumuIstatistikleri_CezaInfazKurumlarýSayýKapasiteBilgileri()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -46,7 +46,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void CezaInfazKurumuIstatistikleri_CezaInfazKurumuCinsiyetStatuUyluk()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -76,7 +76,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void IssizlikOrani_GetÝþtekiDurumVeEkonomikFaaliyet()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -103,7 +103,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void IssizlikOrani_GetSosyalGüvenlikKuruluþunaKayitlilik()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -133,7 +133,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void KulturEkonomisi_HarcamaTurlerineGoreHanehalkininHarcamalari()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -160,7 +160,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void KulturEkonomisi_KulturelAlanlaraGoreGenelDevletHarcamasi()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -190,7 +190,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void SaglikHarcamalariIstatistikleri_SaglikHarcamalarininGenelToplamDagilimi()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -217,7 +217,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void SaglikHarcamalariIstatistikleri_SaglikHizmetiSunucularinaGoreHarcamalar()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -247,7 +247,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void SosyalKorumaIstatistikleri_AyniVeNakdiYardimlarinGruplaraGoreDagilimi()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -274,7 +274,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void SosyalKorumaIstatistikleri_GruplaraGoreBrutVeNetSosyalKorumaHarcamalarý()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -304,7 +304,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void TüketiciFiyatEndeksi_ÝstatistikiBolgeBirimleriSiniflamasi()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -331,7 +331,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void TüketiciFiyatEndeksi_AnaHarcamaGruplari()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
@@ -358,7 +358,7 @@ namespace TuikProjectXUnitTest
         [Fact]
         public void TüketiciFiyatEndeksi_TüketiciFiyatEndeksiVeDeðiþimOranlarý()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb3").Options;
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase(databaseName: "TuikDb").Options;
 
             using (var context = new ApplicationDbContext(options))
             {
